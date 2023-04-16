@@ -25,6 +25,7 @@ six="^1.16.0"
 sseclient="^0.0.27"
 torch="^2.0.0"
 transformers="^4.27.1"
+llama-cpp-python = "^0.1.34"
 
 [tool.poetry.scripts]
 openplayground = "server.app:cli"
