@@ -607,9 +607,9 @@ class InferenceManager:
         cancelled = False
         env_model_bin_path = inference_request.model_name.upper() + '_MODEL_BIN_PATH'
         env_model_prompt_path = inference_request.model_name.upper() + '_MODEL_PROMPT_PATH'
-        llama_modlel_path = os.environ.get(env_model_bin_path)
+        llama_model_path = os.environ.get(env_model_bin_path)
         llama_prompt_path = os.environ.get(env_model_prompt_path)
-        if not llama_modlel_path:
+        if not llama_model_path:
             logger.error(f"please add {env_model_bin_path} to the dot env file of environment variable if you want to use this model!")
             return
         if not llama_prompt_path:
@@ -618,7 +618,7 @@ class InferenceManager:
         else:
             with open(Path(llama_prompt_path)) as f:
                 llama_prompt_template = f.read()
-        llm = Llama(model_path=llama_modlel_path)
+        llm = Llama(model_path=llama_model_path)
         prompt_final = llama_prompt_template.format(prompt=inference_request.prompt)
         stream = llm(
             prompt_final,

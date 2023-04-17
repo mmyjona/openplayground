@@ -28,6 +28,9 @@ ARG POETRY_VERSION=1.4.1
 
 RUN pip install --no-cache-dir --upgrade pip
 
+# install build-essential for gcc and make for llama.cpp
+RUN apt update && apt install -y build-essential
+
 # install poetry
 RUN pip install poetry==${POETRY_VERSION}
 RUN poetry config virtualenvs.create false
